@@ -1,0 +1,6 @@
+@InformalTraderApi_HostAddress = http://localhost:5221
+
+GET {{InformalTraderApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
