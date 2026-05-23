@@ -7,11 +7,23 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // 1. ADD CORS POLICY FOR LOCAL FRONTEND DEV
+        // This stops the browser from blocking your React app when it tries to talk to this API
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            });
+        });
+
         // Register standard Controllers and OpenAPI
         builder.Services.AddControllers();
         builder.Services.AddOpenApi();
 
-        // 1. ADD SWAGGER GENERATOR TO CONTAINER
+        // 2. ADD SWAGGER GENERATOR TO CONTAINER
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
@@ -24,7 +36,7 @@ public class Program
 
         var app = builder.Build();
 
-        // 2. ENABLE SWAGGER UI IN DEVELOPMENT MODE
+        // 3. ENABLE SWAGGER UI IN DEVELOPMENT MODE
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
@@ -38,6 +50,11 @@ public class Program
         }
 
         app.UseHttpsRedirection();
+
+        // 4. APPLY THE CORS POLICY 
+        // Order is critical here: UseCors must go BEFORE UseAuthorization and MapControllers
+        app.UseCors("AllowAll");
+
         app.UseAuthorization();
 
         // Map Controller routes automatically
