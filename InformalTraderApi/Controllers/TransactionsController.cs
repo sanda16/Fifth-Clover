@@ -15,7 +15,7 @@ public class TransactionsController : ControllerBase
         _pocketBaseClient = clientFactory.CreateClient("PocketBase");
     }
 
-    // 1. POST: api/transactions/scan-qr (Simulate Customer Paying Trader)
+    // 1. POST: api/transactions/scan-qr (Customer Pays via Central Omnibus Account)
     [HttpPost("scan-qr")]
     public async Task<IActionResult> ScanQrPayment([FromBody] QrPaymentRequest request)
     {
@@ -27,35 +27,41 @@ public class TransactionsController : ControllerBase
         }
         var trader = await traderResponse.Content.ReadFromJsonAsync<PocketBaseTrader>();
 
-        // Step B: Calculate Rewards Hook (e.g., 10% of transaction value converted to points)
+        if (trader == null)
+        {
+            return BadRequest(new { error = "Failed to parse trader profile." });
+        }
+
+        // Step B: Calculate Rewards Hook (10% of transaction value converted to points)
         int calculatedPointsEarned = (int)Math.Floor(request.Amount * 0.10m);
 
-        // Step C: Update the trader's shared Omnibus balance and reward points pool
+        // Step C: Allocate the incoming customer payment to the trader's balance inside the Omnibus pool
         var updatedFields = new
         {
-            omnibus_balance = trader.Omnibus_Balance + request.Amount,
-            reward_points = trader.Reward_Points + calculatedPointsEarned
+            omnibus_balance = trader.OmnibusBalance + request.Amount,
+            reward_points = trader.RewardPoints + calculatedPointsEarned
         };
 
         var updateResponse = await _pocketBaseClient.PatchAsJsonAsync($"collections/traders/records/{request.TraderId}", updatedFields);
         if (!updateResponse.IsSuccessStatusCode)
         {
-            return BadRequest(new { error = "Failed to update trader balance." });
+            return BadRequest(new { error = "Failed to update trader balance virtual allocation." });
         }
 
-        // Step D: Log the transaction into the central digital ledger
+        // Step D: Log the structured payment into your digital ledger
         var ledgerLog = new
         {
             trader = request.TraderId,
-            type = "deposit",
+            type = "Cash_log", // FIXED: Matches allowed database dropdown options
             amount = request.Amount,
-            description = $"QR Code Scan Payment received. Points earned: {calculatedPointsEarned}"
+            description = $"Customer QR payment settled into central Omnibus Account. Points earned: {calculatedPointsEarned}"
         };
+
         await _pocketBaseClient.PostAsJsonAsync("collections/transactions/records", ledgerLog);
 
         return Ok(new
         {
-            message = "Payment successful!",
+            message = "Payment settled via Omnibus Account successfully!",
             newBalance = updatedFields.omnibus_balance,
             pointsEarned = calculatedPointsEarned,
             totalPoints = updatedFields.reward_points
@@ -74,8 +80,13 @@ public class TransactionsController : ControllerBase
         }
         var trader = await traderResponse.Content.ReadFromJsonAsync<PocketBaseTrader>();
 
+        if (trader == null)
+        {
+            return BadRequest(new { error = "Failed to parse trader profile." });
+        }
+
         // Step B: Ensure they have enough money in their portion of the Omnibus account
-        if (trader.Omnibus_Balance < request.Amount)
+        if (trader.OmnibusBalance < request.Amount)
         {
             return BadRequest(new { error = "Insufficient funds in your digital wallet." });
         }
@@ -83,7 +94,7 @@ public class TransactionsController : ControllerBase
         // Step C: Deduct from their balance
         var updatedFields = new
         {
-            omnibus_balance = trader.Omnibus_Balance - request.Amount
+            omnibus_balance = trader.OmnibusBalance - request.Amount
         };
 
         var updateResponse = await _pocketBaseClient.PatchAsJsonAsync($"collections/traders/records/{request.TraderId}", updatedFields);
@@ -96,10 +107,11 @@ public class TransactionsController : ControllerBase
         var ledgerLog = new
         {
             trader = request.TraderId,
-            type = "withdrawal",
+            type = "withdrawal", // Matches "withdrawal" value allowed in schema list options
             amount = request.Amount,
-            description = $"Extracted funds via Standard Bank Instant Money voucher code."
+            description = "Extracted funds via Standard Bank Instant Money voucher code."
         };
+
         await _pocketBaseClient.PostAsJsonAsync("collections/transactions/records", ledgerLog);
 
         return Ok(new
@@ -109,6 +121,3 @@ public class TransactionsController : ControllerBase
         });
     }
 }
-
-
-

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InformalTraderApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb90f6d52d604a62931d8a0ab84a47e27d36c499")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dabd9fac65f725677d961b37bf08bc59f5e7be6e")]
 [assembly: System.Reflection.AssemblyProductAttribute("InformalTraderApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InformalTraderApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

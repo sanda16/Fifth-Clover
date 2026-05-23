@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InformalTraderApi.DTOs;
+using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Json;
-using InformalTraderApi.DTOs;
+using System.Text.Json.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace InformalTraderApi;
+namespace InformalTraderApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")] // Endpoint: api/auth
@@ -19,18 +21,27 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request)
     {
-        // 1. Map incoming DTO to match your exact PocketBase database conventions
+        // 1. Clean up phone number input & parse strings into integers to match schema numbers
+        if (!long.TryParse(request.PhoneNumber, out long parsedPhone) ||
+            !long.TryParse(request.SaId, out long parsedId))
+        {
+            return BadRequest(new { error = "Phone number and SA ID must contain only numeric characters." });
+        }
+
+        // 2. Map payload. PocketBase Auth collections require an email, password, and passwordConfirm.
         var newTrader = new
         {
-            phone_number = request.PhoneNumber,
-            pin = request.Pin,
+            email = $"{request.PhoneNumber.Trim()}@informaltrader.local", // Hackathon placeholder email
+            password = request.Pin.Trim(),
+            passwordConfirm = request.Pin.Trim(),
+            phone_number = parsedPhone,
             business_name = request.BusinessName,
             omnibus_balance = 0.00,
             reward_points = 0,
-            id_number = request.SaId // Matched to your custom field
+            id_number = parsedId
         };
 
-        // 2. Post directly to PocketBase's REST API endpoint
+        // 3. Post to PocketBase records creation endpoint
         var response = await _pocketBaseClient.PostAsJsonAsync("collections/traders/records", newTrader);
 
         if (!response.IsSuccessStatusCode)
@@ -47,53 +58,50 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
-        // 1. Query PocketBase using raw REST filtering to find the phone number
-        string filter = $"(phone_number='{request.PhoneNumber}')";
-        var response = await _pocketBaseClient.GetAsync($"collections/traders/records?filter={Uri.EscapeDataString(filter)}");
+        // 1. Generate fake identity email because PocketBase Auth uses "email" as identity
+        string identityEmail = $"{request.PhoneNumber.Trim()}@informaltrader.local";
+
+        var loginPayload = new
+        {
+            identity = identityEmail,
+            password = request.Pin.Trim()
+        };
+
+        // 2. Direct hit to PocketBase's native Auth token authentication router
+        var response = await _pocketBaseClient.PostAsJsonAsync("collections/traders/auth-with-password", loginPayload);
 
         if (!response.IsSuccessStatusCode)
         {
-            return StatusCode((int)response.StatusCode, new { error = "Database connection error." });
+            return Unauthorized(new { error = "Invalid phone number or PIN authentication failed." });
         }
 
-        var result = await response.Content.ReadFromJsonAsync<PocketBaseListResponse>();
+        // 3. Extract verified user profile item from inside PocketBase OAuth token response wrapper
+        var authResult = await response.Content.ReadFromJsonAsync<PocketBaseAuthSuccessResponse>();
 
-        if (result == null || result.Items.Count == 0)
+        if (authResult?.Record == null)
         {
-            return NotFound(new { error = "No trader found with this phone number." });
+            return NotFound(new { error = "Trader record profile parsing failed." });
         }
 
-        var trader = result.Items[0];
-
-        // 2. Simple, fast hackathon credentials check
-        if (trader.Pin != request.Pin)
-        {
-            return BadRequest(new { error = "Invalid PIN." });
-        }
-
-        // 3. Return clean JSON data for your React Frontend to track session state 
+        // 4. Return clean context response state for your React frontend 
         return Ok(new
         {
             message = "Login successful!",
-            userId = trader.Id,         // PocketBase system record ID
-            idNumber = trader.Id_Number, // Your custom SA ID field
-            businessName = trader.Business_Name,
-            phoneNumber = trader.Phone_Number
+            token = authResult.Token, // Pass your JWT token back to the frontend
+            userId = authResult.Record.Id,
+            idNumber = authResult.Record.IdNumber.ToString(),
+            businessName = authResult.Record.BusinessName,
+            phoneNumber = authResult.Record.PhoneNumber.ToString()
         });
     }
 }
 
-// Helper classes to cleanly parse the raw PocketBase JSON structure response
-public class PocketBaseListResponse
+// Direct sub-helper wrapper parsing success tokens from native PocketBase Auth endpoints
+public class PocketBaseAuthSuccessResponse
 {
-    public List<PocketBaseTraderItem> Items { get; set; } = new();
-}
+    [JsonPropertyName("token")]
+    public string Token { get; set; } = string.Empty;
 
-public class PocketBaseTraderItem
-{
-    public string Id { get; set; } = string.Empty; // System record identifier
-    public string Phone_Number { get; set; } = string.Empty;
-    public string Pin { get; set; } = string.Empty;
-    public string Business_Name { get; set; } = string.Empty;
-    public string Id_Number { get; set; } = string.Empty; // Matched convention
+    [JsonPropertyName("record")]
+    public PocketBaseTraderItem Record { get; set; } = new();
 }

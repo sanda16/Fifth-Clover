@@ -1,5 +1,3 @@
-bin/
-obj/
-*.db
-*.db-shm
-*.db-wal
+pb_data
+*.vsidx
+.vs/
