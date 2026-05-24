@@ -1,38 +1,96 @@
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\appsettings.Development.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\appsettings.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.staticwebassets.endpoints.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.exe
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.deps.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.runtimeconfig.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.pdb
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\Microsoft.OpenApi.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.csproj.AssemblyReference.cache
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.AssemblyInfoInputs.cache
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.AssemblyInfo.cs
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.csproj.CoreCompileInputs.cache
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.sourcelink.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\rjimswa.dswa.cache.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\scopedcss\bundle\InformalTraderApi.styles.css
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.json.cache
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\staticwebassets.development.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.endpoints.json
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\swae.build.ex.cache
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\Informal.2E71962D.Up2Date
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\refint\InformalTraderApi.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.pdb
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.genruntimeconfig.cache
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\obj\Debug\net10.0\ref\InformalTraderApi.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Sabelo\source\repos\sanda16\Fifth-Clover\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\appsettings.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.staticwebassets.endpoints.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.exe
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.deps.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.runtimeconfig.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.pdb
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.csproj.AssemblyReference.cache
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.AssemblyInfoInputs.cache
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.AssemblyInfo.cs
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.csproj.CoreCompileInputs.cache
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\scopedcss\bundle\InformalTraderApi.styles.css
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\Informal.2E71962D.Up2Date
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\refint\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.pdb
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.genruntimeconfig.cache
+C:\Users\secuser\Desktop\Project\InformalTraderApi\obj\Debug\net10.0\ref\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\appsettings.Development.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\appsettings.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\InformalTraderApi.staticwebassets.endpoints.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\InformalTraderApi.deps.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\InformalTraderApi.runtimeconfig.json
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\InformalTraderApi.pdb
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\Microsoft.OpenApi.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\secuser\Desktop\Project\InformalTraderApi\bin\TempBuild\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\appsettings.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.staticwebassets.endpoints.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.exe
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.deps.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.runtimeconfig.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\InformalTraderApi.pdb
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.csproj.AssemblyReference.cache
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.AssemblyInfoInputs.cache
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.AssemblyInfo.cs
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.csproj.CoreCompileInputs.cache
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\scopedcss\bundle\InformalTraderApi.styles.css
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\Informal.2E71962D.Up2Date
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\refint\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.pdb
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\InformalTraderApi.genruntimeconfig.cache
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\obj\Debug\net10.0\ref\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\appsettings.Development.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\appsettings.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\InformalTraderApi.staticwebassets.endpoints.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\InformalTraderApi.deps.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\InformalTraderApi.runtimeconfig.json
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\InformalTraderApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\InformalTraderApi.pdb
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\Microsoft.OpenApi.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\secuser\Desktop\Project v2\InformalTraderApi\bin\TempBuild\Swashbuckle.AspNetCore.SwaggerUI.dll

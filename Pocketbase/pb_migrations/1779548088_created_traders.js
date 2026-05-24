@@ -99,17 +99,19 @@ migrate((app) => {
         "type": "bool"
       },
       {
+        "autogeneratePattern": "",
         "help": "",
         "hidden": false,
-        "id": "number1795275867",
-        "max": null,
-        "min": null,
+        "id": "text1795275867",
+        "max": 0,
+        "min": 0,
         "name": "phone_number",
-        "onlyInt": false,
+        "pattern": "",
         "presentable": false,
+        "primaryKey": false,
         "required": false,
         "system": false,
-        "type": "number"
+        "type": "text"
       },
       {
         "autogeneratePattern": "",
@@ -153,17 +155,19 @@ migrate((app) => {
         "type": "number"
       },
       {
+        "autogeneratePattern": "",
         "help": "",
         "hidden": false,
-        "id": "number2963778233",
-        "max": null,
-        "min": null,
+        "id": "text2963778233",
+        "max": 0,
+        "min": 0,
         "name": "id_number",
-        "onlyInt": false,
+        "pattern": "",
         "presentable": false,
+        "primaryKey": false,
         "required": false,
         "system": false,
-        "type": "number"
+        "type": "text"
       },
       {
         "hidden": false,

@@ -120,4 +120,96 @@ public class TransactionsController : ControllerBase
             remainingBalance = updatedFields.omnibus_balance
         });
     }
-}
+
+    // 3. POST: api/transactions/b2b-transfer (B2B Supplier Transfer - Zero Fee Internal Transfer)
+    [HttpPost("b2b-transfer")]
+    public async Task<IActionResult> B2bTransfer([FromBody] B2bTransferRequest request)
+    {
+        // Step A: Validate input
+        if (string.IsNullOrEmpty(request.SenderTraderId) || string.IsNullOrEmpty(request.ReceiverSupplierId) || request.Amount <= 0)
+        {
+            return BadRequest(new { error = "Invalid request parameters." });
+        }
+
+        // Step B: Fetch the sender trader profile
+        var senderResponse = await _pocketBaseClient.GetAsync($"collections/traders/records/{request.SenderTraderId}");
+        if (!senderResponse.IsSuccessStatusCode)
+        {
+            return NotFound(new { error = "Sender trader profile not found." });
+        }
+        var sender = await senderResponse.Content.ReadFromJsonAsync<PocketBaseTrader>();
+        if (sender == null)
+        {
+            return BadRequest(new { error = "Failed to parse sender trader profile." });
+        }
+
+        // Step C: Verify sender has sufficient funds
+        if (sender.OmnibusBalance < request.Amount)
+        {
+            return BadRequest(new { error = "Insufficient funds in your digital wallet." });
+        }
+
+        // Step D: Fetch the receiver supplier profile
+        var receiverResponse = await _pocketBaseClient.GetAsync($"collections/traders/records/{request.ReceiverSupplierId}");
+        if (!receiverResponse.IsSuccessStatusCode)
+        {
+            return NotFound(new { error = "Receiver supplier profile not found." });
+        }
+        var receiver = await receiverResponse.Content.ReadFromJsonAsync<PocketBaseTrader>();
+        if (receiver == null)
+        {
+            return BadRequest(new { error = "Failed to parse receiver supplier profile." });
+        }
+
+        // Step E: Deduct from sender's balance
+        var senderUpdate = new
+        {
+            omnibus_balance = sender.OmnibusBalance - request.Amount
+        };
+        var senderUpdateResponse = await _pocketBaseClient.PatchAsJsonAsync($"collections/traders/records/{request.SenderTraderId}", senderUpdate);
+        if (!senderUpdateResponse.IsSuccessStatusCode)
+        {
+            return BadRequest(new { error = "Failed to deduct funds from sender account." });
+        }
+
+        // Step F: Add to receiver's balance
+        var receiverUpdate = new
+        {
+            omnibus_balance = receiver.OmnibusBalance + request.Amount
+        };
+        var receiverUpdateResponse = await _pocketBaseClient.PatchAsJsonAsync($"collections/traders/records/{request.ReceiverSupplierId}", receiverUpdate);
+        if (!receiverUpdateResponse.IsSuccessStatusCode)
+        {
+            // Rollback sender update if receiver update fails
+            await _pocketBaseClient.PatchAsJsonAsync($"collections/traders/records/{request.SenderTraderId}", new { omnibus_balance = sender.OmnibusBalance });
+            return BadRequest(new { error = "Failed to credit receiver account. Transaction rolled back." });
+        }
+
+        // Step G: Log sender's transfer outgoing
+        var senderLog = new
+        {
+            trader = request.SenderTraderId,
+            type = "transfer_out", // B2B transfer outgoing
+            amount = request.Amount,
+            description = $"B2B zero-fee transfer sent to supplier {request.ReceiverSupplierId}."
+        };
+        await _pocketBaseClient.PostAsJsonAsync("collections/transactions/records", senderLog);
+
+        // Step H: Log receiver's transfer incoming
+        var receiverLog = new
+        {
+            trader = request.ReceiverSupplierId,
+            type = "transfer_in", // B2B transfer incoming
+            amount = request.Amount,
+            description = $"B2B zero-fee transfer received from trader {request.SenderTraderId}."
+        };
+        await _pocketBaseClient.PostAsJsonAsync("collections/transactions/records", receiverLog);
+
+        return Ok(new
+        {
+            message = "B2B transfer completed successfully! Zero fees applied.",
+            senderRemainingBalance = senderUpdate.omnibus_balance,
+            receiverNewBalance = receiverUpdate.omnibus_balance,
+            amountTransferred = request.Amount
+        });
+    }}

@@ -32,13 +32,16 @@ public class PocketBaseTraderItem
     public string Id { get; set; } = string.Empty;
 
     [JsonPropertyName("phone_number")]
-    public long PhoneNumber { get; set; } // Schema specifies 'number'
+    public string PhoneNumber { get; set; } = string.Empty; // Stored as text to keep the leading 0
 
     [JsonPropertyName("business_name")]
     public string BusinessName { get; set; } = string.Empty;
 
     [JsonPropertyName("id_number")]
-    public long IdNumber { get; set; } // Schema specifies 'number'
+    public string IdNumber { get; set; } = string.Empty; // Stored as text to keep leading zeros
+
+    [JsonPropertyName("omnibus_balance")]
+    public decimal OmnibusBalance { get; set; }
 
     // Note: PocketBase never returns the password/pin in the response payload for safety.
     // We will verify logins using PocketBase's official authentication endpoint instead.

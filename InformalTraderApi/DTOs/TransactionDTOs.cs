@@ -14,6 +14,13 @@ public class ExtractionRequest
     public decimal Amount { get; set; }
 }
 
+public class B2bTransferRequest
+{
+    public string SenderTraderId { get; set; } = string.Empty;
+    public string ReceiverSupplierId { get; set; } = string.Empty;
+    public decimal Amount { get; set; }
+}
+
 public class PocketBaseTrader
 {
     [JsonPropertyName("id")]

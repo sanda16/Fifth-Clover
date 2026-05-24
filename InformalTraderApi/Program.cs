@@ -49,7 +49,12 @@ public class Program
             });
         }
 
-        app.UseHttpsRedirection();
+        // Skip HTTPS redirection in Development so the Vite proxy (which talks
+        // to the HTTP endpoint on :5221) doesn't get bounced with 307 redirects.
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseHttpsRedirection();
+        }
 
         // 4. APPLY THE CORS POLICY 
         // Order is critical here: UseCors must go BEFORE UseAuthorization and MapControllers
