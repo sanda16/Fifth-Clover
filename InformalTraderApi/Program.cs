@@ -1,65 +1,41 @@
-// Database: SASENTSIGUSA
-namespace InformalTraderApi;
+// Entry point configuration. 
+// Gents, ensure CORS is permissive for local testing so the Vite frontend does not get blocked.
+var builder = WebApplication.CreateBuilder(args);
 
-public class Program
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// Register HTTP Clients for dependency injection
+builder.Services.AddHttpClient("PocketBase", client =>
 {
-    public static void Main(string[] args)
+    // Default local PocketBase port
+    client.BaseAddress = new Uri("http://127.0.0.1:8090/api/");
+});
+
+builder.Services.AddHttpClient("PythonML", client =>
+{
+    // The bridge to the Data Science engine
+    client.BaseAddress = new Uri("http://127.0.0.1:8000/");
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
     {
-        var builder = WebApplication.CreateBuilder(args);
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
-        // 1. ADD CORS POLICY FOR LOCAL FRONTEND DEV
-        // This stops the browser from blocking your React app when it tries to talk to this API
-        builder.Services.AddCors(options =>
-        {
-            options.AddPolicy("AllowAll", policy =>
-            {
-                policy.AllowAnyOrigin()
-                      .AllowAnyMethod()
-                      .AllowAnyHeader();
-            });
-        });
+var app = builder.Build();
 
-        // Register standard Controllers and OpenAPI
-        builder.Services.AddControllers();
-        builder.Services.AddOpenApi();
-
-        // 2. ADD SWAGGER GENERATOR TO CONTAINER
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        // Register HttpClient configured for your local PocketBase REST API
-        builder.Services.AddHttpClient("PocketBase", client =>
-        {
-            client.BaseAddress = new Uri("http://127.0.0.1:8090/api/");
-            client.DefaultRequestHeaders.Add("Accept", "application/json");
-        });
-
-        var app = builder.Build();
-
-        // 3. ENABLE SWAGGER UI IN DEVELOPMENT MODE
-        if (app.Environment.IsDevelopment())
-        {
-            app.MapOpenApi();
-            app.UseSwagger();
-            app.UseSwaggerUI(options =>
-            {
-                // Sets the Swagger page as the default root launch URL page
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "SmartCash Omni API v1");
-                options.RoutePrefix = string.Empty;
-            });
-        }
-
-        app.UseHttpsRedirection();
-
-        // 4. APPLY THE CORS POLICY 
-        // Order is critical here: UseCors must go BEFORE UseAuthorization and MapControllers
-        app.UseCors("AllowAll");
-
-        app.UseAuthorization();
-
-        // Map Controller routes automatically
-        app.MapControllers();
-
-        app.Run();
-    }
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
+
+app.UseCors();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();

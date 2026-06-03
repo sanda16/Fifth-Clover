@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap');
+
+:root {
+  --bg: #e4e9f2;
+  --shadow-light: #ffffff;
+  --shadow-dark: #b4bfd8;
+  --sb-blue: #0033A0; 
+  --sb-blue-deep: #062a66;
+  --sb-blue-bright: #1f6fe0;
+  --text: #2b3556;
+  --text-muted: #7a87a8;
+  --error: #d8453b;
+  --success: #0e8a5f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); font-family: 'Manrope', system-ui, sans-serif; color: var(--text); }
+
+.tw-login {
+  min-height: 100vh; display: grid; place-items: center; padding: 24px;
+  background-image: radial-gradient(1100px 600px at 82% -12%, rgba(31, 111, 224, 0.15), transparent 58%), radial-gradient(900px 520px at -12% 112%, rgba(10, 61, 145, 0.10), transparent 55%);
+}
+
+.tw-card {
+  width: 100%; max-width: 420px; padding: 42px 36px 38px; background: var(--bg); border-radius: 32px;
+  box-shadow: 16px 16px 32px var(--shadow-dark), -16px -16px 32px var(--shadow-light);
+  animation: tw-rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.tw-card-banker { max-width: 1000px; width: 95vw; }
+
+@keyframes tw-rise { from { opacity: 0; transform: translateY(26px) scale(0.97); } to { opacity: 1; transform: none; } }
+@keyframes tw-fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.tw-logo {
+  width: 72px; height: 72px; margin: 0 auto 22px; display: grid; place-items: center; border-radius: 20px;
+  color: var(--sb-blue); background: var(--bg); box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+}
+
+.tw-title { text-align: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 27px; letter-spacing: -0.5px; }
+.tw-title span { color: var(--sb-blue); }
+.tw-subtitle { text-align: center; margin: 6px 0 30px; font-size: 14.5px; color: var(--text-muted); }
+
+/* Form Controls */
+.tw-label { display: block; margin: 0 0 9px 4px; font-size: 12.5px; font-weight: 600; color: var(--text-muted); }
+.tw-field {
+  display: flex; align-items: center; gap: 12px; height: 56px; padding: 0 16px; border-radius: 16px; background: var(--bg);
+  box-shadow: inset 5px 5px 10px var(--shadow-dark), inset -5px -5px 10px var(--shadow-light); transition: box-shadow 0.25s ease;
+}
+.tw-field:focus-within { box-shadow: inset 3px 3px 7px var(--shadow-dark), inset -3px -3px 7px var(--shadow-light), 0 0 0 2px rgba(0, 51, 160, 0.28); }
+.tw-field input { flex: 1; border: none; outline: none; background: transparent; font-size: 15px; color: var(--text); }
+.tw-field input::placeholder { color: var(--text-muted); opacity: 0.7; }
+.tw-group { margin-bottom: 18px; }
+
+/* Buttons & Checks */
+.tw-row { display: flex; align-items: center; justify-content: space-between; margin: 2px 4px 26px; font-size: 13px; }
+.tw-check { display: flex; align-items: center; gap: 9px; cursor: pointer; color: var(--text-muted); user-select: none; }
+.tw-check input { display: none; }
+.tw-box {
+  width: 22px; height: 22px; border-radius: 7px; background: var(--bg);
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light); display: grid; place-items: center; color: transparent;
+}
+.tw-check input:checked + .tw-box { color: var(--sb-blue); }
+
+.tw-btn {
+  width: 100%; height: 56px; border: none; cursor: pointer; border-radius: 16px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: #fff;
+  background: linear-gradient(135deg, var(--sb-blue-bright), var(--sb-blue)); box-shadow: 6px 6px 14px var(--shadow-dark), -6px -6px 14px var(--shadow-light);
+}
+.tw-btn-secondary { background: var(--bg); color: var(--sb-blue); border: 2px solid var(--sb-blue); box-shadow: 4px 4px 10px var(--shadow-dark), -4px -4px 10px var(--shadow-light); }
+
+/* Dashboard Specific */
+.tw-dash-grid { display: flex; gap: 15px; margin-bottom: 25px; }
+.tw-metric-card { flex: 1; padding: 20px; border-radius: 20px; text-align: center; background: var(--bg); box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light); }
+.tw-metric-card h3 { color: var(--sb-blue); margin-top: 5px; font-size: 22px;}
+.tw-metric-card small { color: var(--text-muted); font-size: 11px; font-weight: bold; text-transform: uppercase; }
+
+/* Micro-Ledger Chat */
+.tw-chat-area { height: 300px; overflow-y: auto; padding: 10px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; border-radius: 16px; box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light); }
+.tw-bubble { padding: 12px 16px; border-radius: 16px; font-size: 14px; max-width: 85%; }
+.tw-bubble-bot { background: var(--bg); align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 3px 3px 6px var(--shadow-dark), -3px -3px 6px var(--shadow-light); }
+.tw-bubble-user { background: var(--sb-blue); color: white; align-self: flex-end; border-bottom-right-radius: 4px; box-shadow: 0 4px 10px rgba(0, 51, 160, 0.3); }
+
+/* Banker Table */
+.tw-table { width: 100%; text-align: left; border-collapse: collapse; margin-top: 20px; }
+.tw-table th { padding: 15px; border-bottom: 2px solid var(--shadow-dark); color: var(--text-muted); font-weight: 600; }
+.tw-table td { padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.tw-badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.tw-badge-success { background: rgba(14, 138, 95, 0.1); color: var(--success); }
+.tw-badge-error { background: rgba(216, 69, 59, 0.1); color: var(--error); }

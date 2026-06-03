@@ -32,6 +32,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "InformalTraderApi.Controllers.CreditController",
+    "Method": "EvaluateCredit",
+    "RelativePath": "api/Credit/check-eligibility",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "traderId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InformalTraderApi.Controllers.RewardsController",
     "Method": "GetPointsBalance",
     "RelativePath": "api/Rewards/balance/{traderId}",

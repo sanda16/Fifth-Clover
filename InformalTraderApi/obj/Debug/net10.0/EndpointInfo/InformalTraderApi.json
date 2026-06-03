@@ -67,6 +67,37 @@
         }
       }
     },
+    "/api/Credit/check-eligibility": {
+      "post": {
+        "tags": [
+          "Credit"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Rewards/balance/{traderId}": {
       "get": {
         "tags": [
@@ -272,6 +303,9 @@
   "tags": [
     {
       "name": "Auth"
+    },
+    {
+      "name": "Credit"
     },
     {
       "name": "Rewards"
